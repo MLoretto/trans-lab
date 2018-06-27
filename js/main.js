@@ -1,4 +1,6 @@
-function getBipData(bipNumber) {
+let infoBip;
+
+window.getBipData(bipNumber) {
     Promise.all([
       fetch(`http://www.psep.cl/api/Bip.php?&numberBip=${bipNumber}`)
     ]).then((responses)=>{
@@ -9,3 +11,4 @@ function getBipData(bipNumber) {
     });
   };
   
+  infoBip = responseJsons[0];

@@ -1,1 +1,12 @@
-/* YeyeYeee código aquí */
+.verde{
+    background-color: green;
+}
+
+.verde p{
+    text-align: center;
+}
+.formulario{
+    width: 250px;
+    margin: 0 auto;
+    }
+
