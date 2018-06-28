@@ -1,12 +1,14 @@
-.verde{
-    background-color: green;
+.gris{
+    background-color: grey;
 }
 
-.verde p{
+.gris p{
     text-align: center;
 }
 .formulario{
     width: 250px;
     margin: 0 auto;
     }
-
+.btn {
+    color: white !important;
+}

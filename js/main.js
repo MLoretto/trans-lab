@@ -8,7 +8,14 @@ window.getBipData(bipNumber) {
     }).then((responseJsons)=>{ 
       const bipCardData = responseJsons[0]
       console.log(bipCardData);
+      infoBip = responseJsons[0];
     });
   };
-  
-  infoBip = responseJsons[0];
+  /*
+  infoBip["N&ordm; tarjeta bip! "];
+  infoBip["Estado de contrato"];
+  infoBip["Saldo  tarjeta"];
+  infoBip["Fecha saldo"];
+*/
+
+
