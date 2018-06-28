@@ -9,26 +9,31 @@
     <title>SALDO BIP</title>
 </head>
 <body>
-    <div id="loginPage" class="container" style="display: none"> 
+    <div id="loginPage" class="container-fluid"> 
         <header id="header" class="row gris">
             <div><p><img src="docs/imagen.png" alt="logo" class="responsive" width="80%"></p></div>
         </header>
         <div id="formulario" class="row">
             <div class="col-md-12 gris">
-                <form class="formulario"></form>
                     <div class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo electrónico">
+                        <div class="mx-auto" style="width: 90%;">
+                             <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Correo electrónico">
+                        </div>
+                        <div class="mx-auto" style="width: 90%;">
+                            <input type="password" class="form-control" id="userPassword" placeholder="Contraseña">
+                        </div>
+                        <div class="mx-auto" style="width: 90%;">
+                            <button id="btnLogin" class="btn btn-primary btn-block">INICIAR SESIÓN</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
-                    </div>
-                    <button type="submit" class="btn btn-primary">INICIAR SESIÓN</button>
-                  </form></div>
+                    
+                </form>
+            </div>
         </div>
         <div id="footer" class="row gris">
         </div>
     </div>
-    <div id="bodyContent" class="container">
+    <div id="bodyContent" class="container-fluid">
         <div id="headerBar" class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4">
@@ -40,15 +45,33 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+                <center><h3>TRANS-LAB</h3></center>
+                
             </nav>
         </div>
-        <div id="barMenu" class="container">    
+        <div id="barMenu" class="container-fluid">    
             <button class="btn btn-warning btn-block" id="btnVerSaldo">VER SALDO</button>
             <button class="btn btn-warning btn-block" id="btnCalcTarifa">CALCULAR TARIFA</button>
             <button class="btn btn-warning btn-block" id="btnPerfil">PERFIL</button>
             <button class="btn btn-warning btn-block" id="btnPregFrecuentes">PREGUNTAS FRECUENTES</button>
         </div>
-
+        <div id="perfilUsuario" class="container-fluid">    
+            <div><p><img src="docs/perfil.jpg" alt="logo" class="responsive rounded-0" width="100%"></p></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center">
+                        <span>correo@correo.cl</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center">
+                        <input type="text" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

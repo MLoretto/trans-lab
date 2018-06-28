@@ -1,7 +1,6 @@
 .gris{
     background-color: grey;
 }
-
 .gris p{
     text-align: center;
 }
@@ -12,3 +11,13 @@
 .btn {
     color: white !important;
 }
+.container-fluid {
+    padding: 0px !important;
+ }
+
+body{
+     background: grey !important;
+ }
+
+
+
