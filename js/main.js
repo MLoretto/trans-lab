@@ -3,6 +3,7 @@ let numTarjeta;
 let estContrato;
 let saldTarjeta;
 let fechaSaldo;
+let tarjetas = [];
 
 let userEmail;
 
@@ -11,6 +12,9 @@ const btnCalcTarifa = document.getElementById('btnCalcTarifa');
 const btnPerfil = document.getElementById('btnPerfil');
 const btnPregFrecuentes = document.getElementById('btnPregFrecuentes');
 const btnLogin = document.getElementById('btnLogin');
+const btnAgregarTarjeta = document.getElementById('btnAgregarTarjeta');
+
+
 
 window.getBipData = (bipNumber) => {
     Promise.all([
@@ -23,6 +27,31 @@ window.getBipData = (bipNumber) => {
       estContrato = infoBip['Estado de contrato'];
       saldTarjeta = infoBip['Saldo  tarjeta'];
       fechaSaldo = infoBip['Fecha saldo'];
+
+      if(tarjetas[bipNumber.toString()] === undefined){
+        tarjetas[bipNumber.toString()] = {
+            numTarjeta: infoBip['N&ordm; tarjeta bip! '],
+            estContrato: infoBip['Estado de contrato'],
+            saldTarjeta: infoBip['Saldo  tarjeta'],
+            fechaSaldo: infoBip['Fecha saldo']
+        }
+      }else{
+        tarjetas[bipNumber.toString()].numTarjeta = infoBip['N&ordm; tarjeta bip! '];
+        tarjetas[bipNumber.toString()].estContrato = infoBip['Estado de contrato'];
+        tarjetas[bipNumber.toString()].saldTarjeta = infoBip['Saldo  tarjeta'];
+        tarjetas[bipNumber.toString()].fechaSaldo = infoBip['Fecha saldo'];
+      }
+     document.getElementById('detalleTarjetas').innerHTML = '';
+     document.getElementById('cbListTarjeta').innerHTML = '';
+      for(let key in tarjetas){
+        document.getElementById('detalleTarjetas').innerHTML += `<tr><td>${key}</td></tr>`; 
+        document.getElementById('cbListTarjeta').innerHTML += `<option value="${key}">${key}</option>`; 
+      }
+
+      
+      console.log('Tarjetas disponibles.');
+      console.log(tarjetas);
+
       console.log(infoBip);
       console.log(numTarjeta);
       console.log(estContrato);
@@ -59,11 +88,16 @@ btnLogin.addEventListener('click', () => {
     iniciarSesion();
 });
 
+btnAgregarTarjeta.addEventListener('click', () => {
+   let txtNumTarjeta = document.getElementById('txtNumTarjeta');
+   if(txtNumTarjeta.value !== ''){
+     agregarTarjeta(txtNumTarjeta.value);
+   }
+});
+
 function verSaldo(){
     hideContent();
-
-console.log(infoBip['Saldo  tarjeta']);
-
+    document.getElementById('verSaldo').style.display = 'block';
 }
 function calcularTarifa(){
     hideContent();
@@ -75,11 +109,23 @@ function verPerfil(){
 function pregFrecuentes(){
     hideContent();
 }
+
+function obtenerSaldo(){
+    const selectedIndex = document.getElementById('cbListTarjeta').selectedIndex;
+    const selectedItem = document.getElementById('cbListTarjeta').options[selectedIndex]; 
+    
+    document.getElementById('saldoTarjeta').innerText = tarjetas[selectedItem.value].saldTarjeta;
+    
+}
+
 function iniciarSesion(){
     userEmail = document.getElementById('userEmail').value;
+    
+    
     let userPass = document.getElementById('userPassword').value;
     if(validarEmail(userEmail)){
         if(validarPassword(userPass)){
+            document.getElementById('correoUsuario').innerText = userEmail;
             hideContent();
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('bodyContent').style.display = 'block';
@@ -114,5 +160,16 @@ function validarPassword(valor){
     return valor.length <= 8 && /^([0-9])*$/.test(valor);
 }
  
-  document.getElementById('bodyContent').style.display = 'none';
-  getBipData('73506052');
+function agregarTarjeta(tarjeta){
+  if(tarjetas[tarjeta.toString()] !== undefined){
+    numTarjeta = tarjetas[tarjeta.toString()].numTarjeta;
+    estContrato = tarjetas[tarjeta.toString()].estContrato;
+    saldTarjeta = tarjetas[tarjeta.toString()].saldTarjeta;
+    fechaSaldo = tarjetas[tarjeta.toString()].fechaSaldo;
+  }else{
+    getBipData(tarjeta.toString());
+  } 
+  console.log(tarjetas);
+}
+
+document.getElementById('bodyContent').style.display = 'none';
