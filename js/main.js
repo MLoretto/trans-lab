@@ -43,9 +43,12 @@ window.getBipData = (bipNumber) => {
       }
      document.getElementById('detalleTarjetas').innerHTML = '';
      document.getElementById('cbListTarjeta').innerHTML = '';
+     document.getElementById('cbListTarjetaCalculo').innerHTML = '';
       for(let key in tarjetas){
         document.getElementById('detalleTarjetas').innerHTML += `<tr><td>${key}</td></tr>`; 
         document.getElementById('cbListTarjeta').innerHTML += `<option value="${key}">${key}</option>`; 
+        document.getElementById('cbListTarjetaCalculo').innerHTML += `<option value="${key}">${key}</option>`; 
+        
       }
 
       
@@ -101,6 +104,7 @@ function verSaldo(){
 }
 function calcularTarifa(){
     hideContent();
+    document.getElementById('calcularTarifaPage').style.display = 'block';
 }
 function verPerfil(){
     hideContent();
@@ -116,6 +120,23 @@ function obtenerSaldo(){
     
     document.getElementById('saldoTarjeta').innerText = tarjetas[selectedItem.value].saldTarjeta;
     
+}
+function calcularSaldo(){
+    const selectedTarifaIndex = document.getElementById('cbListTarifaCalculo').selectedIndex;
+    const selectedTarifaItem = document.getElementById('cbListTarifaCalculo').options[selectedTarifaIndex]; 
+    const selectedTarjetaIndex = document.getElementById('cbListTarjetaCalculo').selectedIndex;
+    const selectedTarjetaItem = document.getElementById('cbListTarjetaCalculo').options[selectedTarjetaIndex]; 
+    const costoTarjetaCalculo = document.getElementById('costoTarjetaCalculo');
+    const saldoTarjetaCalculo = document.getElementById('saldoTarjetaCalculo');
+    let calculo = parseInt(tarjetas[selectedTarjetaItem.value].saldTarjeta.replace("$", "").replace(".", "")) - parseInt(selectedTarifaItem.value);
+    console.log("calculo....");
+    console.log(selectedTarjetaItem.value);
+    console.log(selectedTarifaItem.value);
+    console.log(tarjetas[selectedTarjetaItem.value].saldTarjeta.replace("$", "").replace(".", ""));
+
+
+    costoTarjetaCalculo.innerText = "$" + selectedTarifaItem.value;
+    saldoTarjetaCalculo.innerText = "$" + calculo;
 }
 
 function iniciarSesion(){

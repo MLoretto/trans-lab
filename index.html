@@ -36,7 +36,7 @@
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4">
                     <button class="btn btn-warning btn-block" id="btnVerSaldoMenu" onclick="verSaldo()">VER SALDO</button>
-                    <button class="btn btn-warning btn-block" id="btnCalcTarifaMenu">CALCULAR TARIFA</button>
+                    <button class="btn btn-warning btn-block" id="btnCalcTarifaMenu" onclick="calcularTarifa()">CALCULAR TARIFA</button>
                     <button class="btn btn-warning btn-block" id="btnPerfilMenu" onclick="verPerfil()">PERFIL</button>
                     <button class="btn btn-warning btn-block" id="btnPregFrecuentesMenu" >PREGUNTAS FRECUENTES</button>
                 </div>
@@ -74,11 +74,77 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-center">
-                        <div id="saldoTarjeta"></div>
+                        <div class="card">
+                            <div class="card-header">
+                                SALDO TARJETA
+                            </div>
+                            <div class="card-body">
+                                <div id="saldoTarjeta"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>                         
         </div>
+        <div id="calcularTarifaPage" class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-center">
+                            <select id="cbListTarifaCalculo" placeholder="Seleccione tarifa" >
+                                <option value="760">Horario Alto</option>
+                                <option value="680">Horario Medio</option>
+                                <option value="630">Horario Bajo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-center">
+                            <select id="cbListTarjetaCalculo" placeholder="Seleccione tarjeta" ></select>
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-warning btn-block" id="btnCalcularTarifa" onclick="calcularSaldo()">CALCULAR</button>
+                        </div>
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center">
+                                <div class="card">
+                                    <div class="card-header">
+                                        COSTO PASAJE
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="costoTarjetaCalculo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                         
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center">
+                                <div class="card">
+                                    <div class="card-header">
+                                        SALDO FINAL
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="saldoTarjetaCalculo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                         
+            </div>
+
         <div id="perfilUsuario" class="container-fluid">    
             <div><p><img src="docs/perfil.jpg" alt="logo" class="responsive rounded-0" width="100%"></p></div>
             <div class="row">
